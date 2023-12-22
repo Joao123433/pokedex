@@ -16,6 +16,7 @@ let styles = [];
 const divImage = document.querySelector("#image");
 const divStats = document.querySelector("#stats");
 const h1Stat = document.querySelector("#h1-stat");
+const footer = document.querySelector("#rodape");
 function randomPokemon() {
     return Math.round(Math.random() * (151 - 1) + 1);
 }
@@ -71,6 +72,7 @@ function TratamentError(err) {
     divImage.classList.add("none");
     divStats.classList.add("none");
     h1Stat.classList.add("none");
+    footer.classList.add("none");
     namePokemon.classList.add("error");
     namePokemon.textContent = err;
 }
@@ -78,6 +80,7 @@ function clearTratamentError() {
     divImage.classList.remove("none");
     divStats.classList.remove("none");
     h1Stat.classList.remove("none");
+    footer.classList.remove("none");
     namePokemon.classList.remove("error");
     namePokemon.textContent = "";
 }
@@ -101,7 +104,7 @@ function searchPokemon() {
         let inputValue = document.querySelector("#value");
         clearInformation();
         try {
-            const response = yield fetchPokemon(inputValue.value);
+            const response = yield fetchPokemon(inputValue.value.toLowerCase());
             clearTratamentError();
             settingInfoPokemon(response);
             settingStatsPokemon(response);
@@ -112,4 +115,9 @@ function searchPokemon() {
     });
 }
 document.querySelector("#search").addEventListener("click", searchPokemon);
+document.addEventListener('keypress', function (event) {
+    if (event.key === 'Enter') {
+        searchPokemon();
+    }
+});
 document.addEventListener("DOMContentLoaded", setup);

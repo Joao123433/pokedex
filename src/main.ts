@@ -8,6 +8,7 @@ let styles = []
 const divImage: HTMLElement = document.querySelector("#image")
 const divStats: HTMLElement = document.querySelector("#stats")
 const h1Stat: HTMLElement = document.querySelector("#h1-stat")
+const footer: HTMLElement = document.querySelector("#rodape")
 
 function randomPokemon() {
   return Math.round(Math.random() * (151 - 1) + 1)
@@ -74,6 +75,7 @@ function TratamentError(err: string) {
   divImage.classList.add("none")
   divStats.classList.add("none")
   h1Stat.classList.add("none")
+  footer.classList.add("none")
   namePokemon.classList.add("error")
   namePokemon.textContent = err
 }
@@ -82,6 +84,7 @@ function clearTratamentError() {
   divImage.classList.remove("none")
   divStats.classList.remove("none")
   h1Stat.classList.remove("none")
+  footer.classList.remove("none")
   namePokemon.classList.remove("error")
   namePokemon.textContent = ""
 }
@@ -105,7 +108,7 @@ async function searchPokemon() {
   clearInformation()
 
   try {
-    const response = await fetchPokemon(inputValue.value)
+    const response = await fetchPokemon(inputValue.value.toLowerCase())
     clearTratamentError()
     settingInfoPokemon(response)
     settingStatsPokemon(response)
@@ -116,4 +119,9 @@ async function searchPokemon() {
 
 
 document.querySelector("#search").addEventListener("click", searchPokemon)
+document.addEventListener('keypress', function(event) {
+  if (event.key === 'Enter') {
+    searchPokemon()
+  }
+});
 document.addEventListener("DOMContentLoaded", setup)
