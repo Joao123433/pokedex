@@ -1,0 +1,356 @@
+@import url('https://fonts.googleapis.com/css2?family=Kalam:wght@300;700&family=Montserrat:wght@100;200;300;400;500;600;700;800&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --display: flex;
+  --font-size: 4rem
+}
+
+body {
+  /* background-color: #ff7402; */
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.63) 0%, rgba(0, 0, 0, 0.63) 100%), var(--bg-color);
+  background-blend-mode: soft-light, normal;
+  width: 100vw;
+  min-height: 100vh;
+  font-family: 'Montserrat', sans-serif;
+}
+
+body::-webkit-scrollbar {
+  width: 0;
+}
+
+header {
+  width: 100vw;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+#div-search {
+  background-color: rgba(255, 255, 255, 0.22);
+  width: 250px;
+  border-radius: 5px;
+  padding: 5px 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#div-search input {
+  background-color: transparent;
+  border: none;
+  color: var(--text);
+  outline: none;
+  font-size: 0.9rem;
+}
+
+#div-search input::placeholder {
+  color: var(--text);
+}
+
+#div-search button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 19px;
+}
+
+header h1 {
+  color: var(--text);
+}
+
+main {
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 50px 0px 40px;
+}
+
+#content {
+  width: 50%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+#info {
+  min-width: 50%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+#info p {
+  margin-left: 10px;
+  font-size: 18px;
+  color: var(--text);
+}
+
+#name-pokemon {
+  font-size: var(--font-size);
+  color: var(--text);
+}
+
+#image {
+  min-width: 50%;
+  display: var(--display);
+}
+
+#image img {
+  height: 400px;
+  width: 400px;
+}
+
+#stats {
+  width: 60%;
+  height: 100%;
+  display: var(--display);
+  justify-content: space-between;
+  color: var(--text);
+  margin-top: 50px;
+}
+
+#label {
+  width: 15%;
+  display: flex;
+  align-items: center;
+}
+
+#label h1 {
+  font-size: 36px;
+  font-weight: 700;
+  display: var(--display);
+}
+
+#content-stats {
+  width: 75%;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+#info-stats {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 30px;
+  gap: 35px;
+  align-items: center;
+}
+
+#name-stat {
+  font-size: 19px;
+  width: 30%;
+}
+
+#range {
+  width: 65%;
+  height: 100%;
+}
+
+#inside {
+  background-color: var(--text);
+  height: 100%;
+  width: 44%;
+  border-radius: 10px;
+}
+
+footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+footer p {
+  color: var(--text);
+}
+
+footer a {
+  color: var(--text);
+  text-decoration: none;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+@media(max-width: 1260px) {
+  #div-search {
+    width: 180px;
+  }
+  #div-search input {
+    width: 70%;
+  }
+  #content {
+    display: flex;
+    flex-direction: column;
+  }
+  #stats {
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+  #info-stats {
+    gap: 0px;
+  }
+  #label {
+    width: auto;
+  }
+  #content-stats {
+    width: 75%;
+  }
+  #name-stat {
+    font-size: 16px;
+    width: 20%;
+  }
+}
+
+@media (max-width: 1000px) {
+  #content-stats {
+    width: 85%;
+  }
+  #name-stat {
+    width: 30%;
+  }
+}
+
+@media (max-width: 560px) {
+  #image img {
+    height: 350px;
+    width: 350px;
+  }
+  #content-stats {
+    width: 95%;
+  }
+  #name-stat {
+    width: 48%;
+  }
+}
+
+@media (max-width: 380px) {
+  header {
+    padding: 5px;
+  }
+  #div-search {
+    width: 45%;
+  }
+  header h1 {
+    font-size: 1.3rem;
+  }
+  #info h1 {
+    font-size: 2.5rem;
+  }
+  #image img {
+    height: 250px;
+    width: 250px;
+  }
+  #content-stats {
+    width: 90vw;
+  }
+  #info-stats {
+    gap: 5px;
+  }
+  #name-stat {
+    font-size: 12px;
+  }
+}
+
+.none {
+  --display: none;
+}
+.error {
+  width: 100%;
+  height: 100%;
+  --font-size: 3.5rem;
+}
+
+.fire {
+  --bg-color: #ff7402;
+  --text: #f1f1f1;
+}
+.grass {
+  --bg-color: #33a165; 
+  --text: #f1f1f1;
+}
+.steel {
+  --bg-color: #00858a; 
+  --text: #f1f1f1;
+}
+.water {
+  --bg-color: #0050ac;
+  --text: #f1f1f1;
+}
+.psychic {
+  --bg-color: #c90086;
+  --text: #f1f1f1;
+}
+.ground {
+  --bg-color: #c90086;
+  --text: #f1f1f1;
+}
+.ice {
+  --bg-color: #70deff; 
+  --text: #000;
+}
+.flying {
+  --bg-color: #5d4e75; 
+  --text: #f1f1f1;
+}
+.ghost {
+  --bg-color: #4d5b64; 
+  --text: #f1f1f1;
+}
+.normal {
+  --bg-color: #753845; 
+  --text: #f1f1f1; 
+}
+.poison {
+  --bg-color: #7e0058;  
+  --text: #f1f1f1; 
+}
+.rock {
+  --bg-color: #6e1a00;
+  --text: #f1f1f1; 
+}
+.fighting {
+  --bg-color: #634136;
+  --text: #f1f1f1;  
+}
+.dark {
+  --bg-color: #272625;
+  --text: #f1f1f1;  
+}
+.bug {
+  --bg-color: #6e1a00; 
+  --text: #f1f1f1;  
+}
+.dragon {
+  --bg-color: #00c431;  
+  --text: #000; 
+}
+.electric {
+  --bg-color: #bba909; 
+  --text: #000; 
+}
+.fairy {
+  --bg-color: #d31c81; 
+  --text: #000; 
+}
+.unknow {
+  --bg-color: #757575; 
+  --text: #000; 
+}
+.shadow {
+  --bg-color: #29292c; 
+  --text: #f1f1f1; 
+}
