@@ -49,7 +49,7 @@ function settingStatsPokemon(pokemon) {
         statsName[i].textContent = pokemon.stats[i].stat.name.replace("-", " ");
         valueStats[i].textContent = pokemon.stats[i]["base_stat"];
         infoStats[i].classList.add('animate__animated', 'animate__bounceInUp');
-        infoStats[i].style.setProperty('--animate-duration', `${i + 1}s`);
+        infoStats[i].style.setProperty('--animate-duration', `${(i + 1) * 0.55}s`);
         const elementoAtual = divInside[i];
         if (elementoAtual instanceof HTMLElement) {
             elementoAtual.style.width = `${pokemon.stats[i]["base_stat"] / 2}%`;
@@ -62,7 +62,7 @@ function fetchPokemon(pokemon) {
         if (response.ok) {
             return response.json();
         }
-        return Promise.reject("Pokemon não foi achado");
+        return Promise.reject("Pokemon não foi encontrado");
     });
 }
 function clearInformation() {
@@ -109,10 +109,28 @@ function setup() {
         }
     });
 }
+function validateInput() {
+    let inputValue = document.querySelector("#value");
+    if (inputValue.value !== "") {
+        return inputValue;
+    }
+    else {
+        throw new Error("Insira o nome de um pokemon");
+    }
+}
+function ErrorInput() {
+    try {
+        validateInput();
+    }
+    catch (error) {
+        TratamentError(error.message);
+    }
+}
 function searchPokemon() {
     return __awaiter(this, void 0, void 0, function* () {
-        let inputValue = document.querySelector("#value");
         clearInformation();
+        ErrorInput();
+        let inputValue = validateInput();
         try {
             const response = yield fetchPokemon(inputValue.value.toLowerCase());
             clearTratamentError();

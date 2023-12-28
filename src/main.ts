@@ -52,7 +52,7 @@ function settingStatsPokemon(pokemon: { stats: { [x: string]: any }[] }) {
     valueStats[i].textContent = pokemon.stats[i]["base_stat"]
 
     infoStats[i].classList.add('animate__animated', 'animate__bounceInUp')
-    infoStats[i].style.setProperty('--animate-duration', `${i + 1}s`);
+    infoStats[i].style.setProperty('--animate-duration', `${(i + 1) * 0.55}s`);
 
     const elementoAtual: Element = divInside[i];
     if (elementoAtual instanceof HTMLElement) {
@@ -67,7 +67,7 @@ async function fetchPokemon(pokemon: string) {
     return response.json()
   }
 
-  return Promise.reject("Pokemon não foi achado")
+  return Promise.reject("Pokemon não foi encontrado")
 }
 
 function clearInformation() {
@@ -119,10 +119,28 @@ async function setup() {
   }
 }
 
-async function searchPokemon() {
+function validateInput() {
   let inputValue: HTMLInputElement = document.querySelector("#value")
-  clearInformation()
+  if(inputValue.value !== "") {
+    return inputValue
+  } else {
+    throw new Error("Insira o nome de um pokemon")
+  }
+}
 
+function ErrorInput() {
+  try {
+    validateInput()
+  }catch(error) {
+    TratamentError(error.message)
+  }
+}
+
+async function searchPokemon() {
+  clearInformation()
+  ErrorInput()
+
+  let inputValue = validateInput()
   try {
     const response = await fetchPokemon(inputValue.value.toLowerCase())
     clearTratamentError()
