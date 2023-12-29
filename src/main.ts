@@ -57,7 +57,11 @@ function settingStatsPokemon(pokemon: { stats: { [x: string]: any }[] }) {
 
     const elementoAtual: Element = divInside[i];
     if (elementoAtual instanceof HTMLElement) {
-      elementoAtual.style.width = `${pokemon.stats[i]["base_stat"] / 2}%`;
+      if(pokemon.stats[i]["base_stat"] > 200) {
+        elementoAtual.style.width = `100%`;
+      } else {
+        elementoAtual.style.width = `${pokemon.stats[i]["base_stat"] / 2}%`;
+      }
     }
   }
 }

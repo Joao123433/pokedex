@@ -53,7 +53,12 @@ function settingStatsPokemon(pokemon) {
         infoStats[i].style.setProperty('--animate-duration', `${(i + 1) * 0.55}s`);
         const elementoAtual = divInside[i];
         if (elementoAtual instanceof HTMLElement) {
-            elementoAtual.style.width = `${pokemon.stats[i]["base_stat"] / 2}%`;
+            if (pokemon.stats[i]["base_stat"] > 200) {
+                elementoAtual.style.width = `100%`;
+            }
+            else {
+                elementoAtual.style.width = `${pokemon.stats[i]["base_stat"] / 2}%`;
+            }
         }
     }
 }
