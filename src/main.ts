@@ -1,15 +1,38 @@
-const statsName: NodeListOf<Element> = document.querySelectorAll("#name-stat")
-const divInside: NodeListOf<Element> = document.querySelectorAll("#inside")
-const valueStats: NodeListOf<Element> = document.querySelectorAll("#value-stat")
+const statsName: NodeListOf<HTMLElement> = document.querySelectorAll("#name-stat")
+const divInside: NodeListOf<HTMLElement> = document.querySelectorAll("#inside")
+const valueStats: NodeListOf<HTMLElement> = document.querySelectorAll("#value-stat")
+
 const infoStats: any = document.querySelectorAll("#info-stats")
+
 const type: HTMLElement = document.querySelector("#type")
 const namePokemon: HTMLElement = document.querySelector("#name-pokemon")
-let styles = []
-
 const divImage: HTMLElement = document.querySelector("#image")
 const divStats: HTMLElement = document.querySelector("#stats")
 const h1Stat: HTMLElement = document.querySelector("#h1-stat")
 const divInfo: HTMLElement = document.querySelector("#info")
+
+enum Colors {
+  fire = "#ff7402",
+  grass = "#33a165",
+  steel = "#00858a",
+  water = "#0050ac",
+  psychic = "#c90086",
+  ground = "#c90086",
+  ice = "#70deff",
+  flying = "#5d4e75",
+  ghost = "#4d5b64",
+  normal = "#753845",
+  poison = "#7e0058",
+  rock = "#6e1a00",
+  fighting = "#634136",
+  dark = "#272625",
+  bug = "#6e1a00",
+  dragon = "#00c431",
+  electric = "#bba909",
+  fairy = "#d31c81",
+  unknow = "#757575",
+  shadow = "#29292c"
+}
 
 function randomPokemon() {
   return Math.round(Math.random() * (151 - 1) + 1)
@@ -18,21 +41,33 @@ function randomPokemon() {
 function settingInfoPokemon(pokemon: { types: { type: { name: string } }[]; name: string; sprites: { other: { [x: string]: { front_default: string } } } }) {
   type.textContent = pokemon.types[0].type.name.toUpperCase()
   
+  // seta o nome do pokemon
   let name = pokemon.name
   name = name[0].toUpperCase() + name.substring(1)
   namePokemon.textContent = name
 
+  // cria e seta a imagem do pokemon
   const image = createImg(pokemon.sprites.other["official-artwork"].front_default)
   document.querySelector("#image").append(image)
 
+  // cria animacoes na section info que contem o nome e o tipo do pokemon
   divInfo.classList.add('animate__animated', 'animate__backInLeft')
   divInfo.style.setProperty('--animate-duration', '2s');
 
+  // cria animacao no h1 stats
   h1Stat.classList.add('animate__animated', 'animate__backInLeft')
   h1Stat.style.setProperty('--animate-duration', '2s');
 
-  document.body.classList.add(pokemon.types[0].type.name)
-  styles.push(pokemon.types[0].type.name)
+  // configura o background para ter a cor do enum Colors
+  let tipoPokemon = pokemon.types[0].type.name
+  document.body.style.backgroundColor = Colors[tipoPokemon]
+  if(tipoPokemon === "ice" || tipoPokemon === "dragon" || tipoPokemon === "electric" || tipoPokemon === "fairy" || tipoPokemon === "unknow") {
+    document.body.classList.remove("white")
+    document.body.classList.add("black")
+  } else {
+    document.body.classList.remove("black")
+    document.body.classList.add("white")
+  }
 }
 
 function createImg(path: string) {
@@ -79,7 +114,6 @@ function clearInformation() {
   statsName.forEach(element => element.textContent = "")
   divInside.forEach((element: HTMLElement) => element.style.width = "100%")
   valueStats.forEach(element => element.textContent = "")
-  styles.forEach(style => document.body.classList.remove(style))
   type.textContent = ""
   namePokemon.textContent = ""
   h1Stat.textContent = ""

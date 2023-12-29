@@ -284,88 +284,17 @@ footer a:hover {
 .none {
   --display: none;
 }
+
 .error {
   --font-size: 3rem;
   font-size: var(--font-size);
   text-align: center;
 }
-.fire {
-  --bg-color: #ff7402;
-  --text: #f1f1f1;
+
+.white {
+  --text: #fff
 }
-.grass {
-  --bg-color: #33a165; 
-  --text: #f1f1f1;
-}
-.steel {
-  --bg-color: #00858a; 
-  --text: #f1f1f1;
-}
-.water {
-  --bg-color: #0050ac;
-  --text: #f1f1f1;
-}
-.psychic {
-  --bg-color: #c90086;
-  --text: #f1f1f1;
-}
-.ground {
-  --bg-color: #c90086;
-  --text: #f1f1f1;
-}
-.ice {
-  --bg-color: #70deff; 
-  --text: #000;
-}
-.flying {
-  --bg-color: #5d4e75; 
-  --text: #f1f1f1;
-}
-.ghost {
-  --bg-color: #4d5b64; 
-  --text: #f1f1f1;
-}
-.normal {
-  --bg-color: #753845; 
-  --text: #f1f1f1; 
-}
-.poison {
-  --bg-color: #7e0058;  
-  --text: #f1f1f1; 
-}
-.rock {
-  --bg-color: #6e1a00;
-  --text: #f1f1f1; 
-}
-.fighting {
-  --bg-color: #634136;
-  --text: #f1f1f1;  
-}
-.dark {
-  --bg-color: #272625;
-  --text: #f1f1f1;  
-}
-.bug {
-  --bg-color: #6e1a00; 
-  --text: #f1f1f1;  
-}
-.dragon {
-  --bg-color: #00c431;  
-  --text: #000; 
-}
-.electric {
-  --bg-color: #bba909; 
-  --text: #000; 
-}
-.fairy {
-  --bg-color: #d31c81; 
-  --text: #000; 
-}
-.unknow {
-  --bg-color: #757575; 
-  --text: #000; 
-}
-.shadow {
-  --bg-color: #29292c; 
-  --text: #f1f1f1; 
+
+.black {
+  --text: #000
 }
