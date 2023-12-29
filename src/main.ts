@@ -39,6 +39,7 @@ function createImg(path: string) {
   const image = document.createElement("img")
   image.src = path
   image.id = "img"
+  image.alt = `imagem do pokemon`
   image.classList.add('animate__animated', 'animate__backInRight')
   image.style.setProperty('--animate-duration', '2s');
   return image
