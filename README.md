@@ -7,7 +7,7 @@
 - `Exibição Detalhada:` Mostra detalhes, incluindo tipo, nome, imagem e estatísticas do Pokémon.
 
 # Dependências
-A aplicação utiliza a [API PokeAPI][https://pokeapi.co/] para obter informações detalhadas sobre os Pokémon.
+A aplicação utiliza a [API PokeAPI](https://pokeapi.co/) para obter informações detalhadas sobre os Pokémon.
 
 ## Estrutura
 - `randomPokemon():` Gera um número aleatório para obter informações sobre um Pokémon.
