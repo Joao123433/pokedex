@@ -12,6 +12,7 @@ const divInside = document.querySelectorAll("#inside");
 const valueStats = document.querySelectorAll("#value-stat");
 const infoStats = document.querySelectorAll("#info-stats");
 const type = document.querySelector("#type");
+const contentStats = document.querySelector("#content-stats");
 const namePokemon = document.querySelector("#name-pokemon");
 const divImage = document.querySelector("#image");
 const divStats = document.querySelector("#stats");
@@ -108,7 +109,7 @@ function fetchPokemon(pokemon) {
 }
 function clearInformation() {
     statsName.forEach(element => element.textContent = "");
-    divInside.forEach((element) => element.style.width = "100%");
+    divInside.forEach((element) => element.style.width = "0%");
     valueStats.forEach(element => element.textContent = "");
     type.textContent = "";
     namePokemon.textContent = "";
@@ -116,9 +117,10 @@ function clearInformation() {
     if (document.querySelector("#img")) {
         document.querySelector("#img").remove();
     }
+    contentStats.classList.remove("none");
     divInfo.classList.remove('animate__animated', 'animate__backInLeft');
     h1Stat.classList.remove('animate__animated', 'animate__backInLeft');
-    infoStats.forEach(element => element.classList.remove('animate__animated', 'animate__bounceInUp'));
+    infoStats.forEach((element) => element.classList.remove('animate__animated', 'animate__bounceInUp'));
 }
 function TratamentError(err) {
     divImage.classList.add("none");

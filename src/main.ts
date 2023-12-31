@@ -5,6 +5,7 @@ const valueStats: NodeListOf<HTMLElement> = document.querySelectorAll("#value-st
 const infoStats: any = document.querySelectorAll("#info-stats")
 
 const type: HTMLElement = document.querySelector("#type")
+const contentStats: HTMLElement = document.querySelector("#content-stats")
 const namePokemon: HTMLElement = document.querySelector("#name-pokemon")
 const divImage: HTMLElement = document.querySelector("#image")
 const divStats: HTMLElement = document.querySelector("#stats")
@@ -112,7 +113,7 @@ async function fetchPokemon(pokemon: string) {
 
 function clearInformation() {
   statsName.forEach(element => element.textContent = "")
-  divInside.forEach((element: HTMLElement) => element.style.width = "100%")
+  divInside.forEach((element) => element.style.width = "0%")
   valueStats.forEach(element => element.textContent = "")
   type.textContent = ""
   namePokemon.textContent = ""
@@ -121,11 +122,13 @@ function clearInformation() {
     document.querySelector("#img").remove()
   }
 
+  contentStats.classList.remove("none")
+
   divInfo.classList.remove('animate__animated', 'animate__backInLeft')
 
   h1Stat.classList.remove('animate__animated', 'animate__backInLeft')
 
-  infoStats.forEach(element => element.classList.remove('animate__animated', 'animate__bounceInUp'))
+  infoStats.forEach((element: { classList: { remove: (arg0: string, arg1: string) => any } }) => element.classList.remove('animate__animated', 'animate__bounceInUp'))
 }
 
 function TratamentError(err: string) {

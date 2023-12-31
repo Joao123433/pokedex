@@ -142,7 +142,7 @@ main {
 
 #content-stats {
   width: 80%;
-  display: flex;
+  display: var(--display);
   flex-direction: column;
   gap: 30px;
 }
@@ -162,11 +162,13 @@ main {
 }
 
 #range {
+  display: var(--display);
   width: 75%;
   height: 100%;
 }
 
 #inside {
+  display: var(--display);
   background-color: var(--text);
   height: 100%;
   width: 44%;
